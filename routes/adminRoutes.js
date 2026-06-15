@@ -14,22 +14,126 @@
 // export default router;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import express from "express";
+// import { createAdmin, login, getMe } from "../controllers/adminController.js";
+// import { protect, adminOnly } from "../middleware/authMiddleware.js";
+
+// const router = express.Router();
+
+// // 🔐 Create Admin (ONLY first time / superadmin)
+// router.post("/create-admin", createAdmin);
+
+// // 🔑 Login
+// router.post("/login", login);
+
+// // 👤 Get logged-in admin profile
+// router.get("/me", protect, getMe);
+
+// // 🔒 Example: Admin-only test route
+// router.get("/dashboard", protect, adminOnly, (req, res) => {
+//   res.json({
+//     message: "Welcome Admin",
+//     admin: req.admin,
+//   });
+// });
+
+// export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import express from "express";
-import { createAdmin, login, getMe } from "../controllers/adminController.js";
+import { login } from "../controllers/adminController.js";
 import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// 🔐 Create Admin (ONLY first time / superadmin)
-router.post("/create-admin", createAdmin);
-
 // 🔑 Login
 router.post("/login", login);
 
-// 👤 Get logged-in admin profile
-router.get("/me", protect, getMe);
+// 👤 profile
+router.get("/me", protect, (req, res) => {
+  res.json(req.admin);
+});
 
-// 🔒 Example: Admin-only test route
+// 🔒 admin dashboard
 router.get("/dashboard", protect, adminOnly, (req, res) => {
   res.json({
     message: "Welcome Admin",
