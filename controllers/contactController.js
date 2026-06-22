@@ -22,9 +22,6 @@ export async function createContact(req, res) {
       })
     }
 
-
-
-
 const lead = await Contact.create({
   name: name.trim(),
   phone: phone.trim(),
@@ -34,11 +31,7 @@ const lead = await Contact.create({
   message: message || "",
   source: "contact",   // ⭐ FIX FIX FIX
   status: "new"
-})
-
-
-
-
+  })
 
     return res.status(201).json({
       success: true,
