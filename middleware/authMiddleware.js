@@ -47,9 +47,14 @@ export const protect = async (req, res, next) => {
 
     req.admin = admin;
     next();
-  } catch (err) {
-    res.status(401).json({ message: "Token failed" });
-  }
+  }catch (err) {
+  console.error("JWT ERROR:", err);
+
+  return res.status(401).json({
+    message: "Token failed",
+    error: err.message,
+  });
+}
 };
 
 // 👑 Admin only
