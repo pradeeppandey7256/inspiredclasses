@@ -18,8 +18,10 @@
 //   } catch {
 //     return res.status(401).json({ message: 'Token invalid or expired' })
 //   }
-// }import jwt from "jsonwebtoken";
+// }
+import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
+
 
 // 🔐 Protect route
 export const protect = async (req, res, next) => {
